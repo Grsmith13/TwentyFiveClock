@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import StartButton from "./components/StartButton";
-
+// The Timer function and timeS variable were based on Vladimir Samsonov code for their project as they were having similar issues.
 function App() {
   const [sessionTime, setSessionTime] = useState(25);
   const [breakTime, setBreakTime] = useState(5);
@@ -13,10 +13,9 @@ function App() {
   });
 
   const timerId = useRef(false);
-  const alert = document.getElementById("beep");
   useEffect(() => {
     return () => {
-      clearInterval(timerId.current); // Cleanup interval on component unmount
+      clearInterval(timerId.current); 
     };
   }, []);
 
@@ -32,7 +31,6 @@ function App() {
   };
 
   const Timer = () => {
-    // if (timerId.current) clearInterval(timerId.current);
     if (!timeS.running) {
       timerId.current = setInterval(() => {
         setTimeS((prevState) => {
@@ -178,7 +176,6 @@ function padZero(number, minLength) {
 }
 
 const getFormattedTime = (milSeconds) => {
-  // let totalSeconds = parseInt(Math.floor(milSeconds / 1000));
   let minutes = parseInt(Math.floor(milSeconds / 60));
   let seconds = parseInt(milSeconds % 60);
 
@@ -187,137 +184,3 @@ const getFormattedTime = (milSeconds) => {
 
 export default App;
 
-// const startTimer = () => {
-//   if (timerId.current) clearInterval(timerId.current);
-//   setIsOn(true);
-//   timerId.current = setInterval(() => {
-//     setTime((prevTime) => {
-//       if (prevTime <= 0) {
-//         clearInterval(timerId.current);
-//         setBreak((prevLabel) => (prevLabel = "breakActive"));
-//         setTime(breakTime * 60 * 1000);
-//         return startBreakTimer();
-//       }
-//       setTime(prevTime - 1000);
-//     });
-//   }, 1000);
-// };
-
-// const startBreakTimer = () => {
-//   if (timerId.current) clearInterval(timerId.current);
-//   setIsOn(true);
-//   timerId.current = setInterval(() => {
-//     setTime((prevTime) => {
-//       if (prevTime <= 0) {
-//         clearInterval(timerId.current);
-//         setBreak((prevLabel) => (prevLabel = "Session"));
-//         setTime(sessionTime * 60 * 1000);
-//         return startTimer();
-//       }
-//       setTime(prevTime - 1000);
-//       console.log(breakActive);
-//     });
-//   }, 1000);
-// };
-
-// import { useEffect, useRef, useState } from "react";
-// import "./App.css";
-// import StartButton from "./components/StartButton";
-
-// function App() {
-//   const [sessionTime, setSessionTime] = useState(25);
-//   const [breakTime, setBreakTime] = useState(5);
-//   const [time, setTime] = useState(sessionTime * 60 * 1000);
-//   const [isOn, setIsOn] = useState(false);
-//   const [breakActive, setBreak] = useState("Session");
-//   const
-//   const timerId = useRef();
-
-//   useEffect(() => {
-//     return () => {
-//       clearInterval(timerId.current); // Cleanup interval on component unmount
-//     };
-//   }, []);
-
-//   const startTimer = () => {
-//     if (timerId.current) clearInterval(timerId.current);
-//     setIsOn(true);
-//     timerId.current = setInterval(() => {
-//       setTime((prevTime) => {
-//         if (prevTime <= 0) {
-//           clearInterval(timerId.current);
-
-//           if (breakActive === "Session") {
-//             setBreak("breakActive");
-//             return breakTime * 60 * 1000; // Switch to breakActive time
-//           } else {
-//             setBreak("Session");
-//             return sessionTime * 60 * 1000; // Switch to session time
-//           }
-//         }
-
-//         return prevTime - 1000;
-//       });
-//     }, 1000);
-//   };
-
-//   const stopTimer = () => {
-//     setIsOn(false);
-//     clearInterval(timerId.current);
-//     timerId.current = 0;
-//   };
-
-//   const resetTimer = () => {
-//     stopTimer();
-//     setBreak("Session");
-//     setSessionTime(25);
-//     setBreakTime(5);
-//     setTime(25 * 60 * 1000);
-//   };
-
-//   const sessionIncrease = () => {
-//     if (sessionTime < 60) {
-//       setSessionTime((prevSessionTime) => {
-//         const newSessionTime = prevSessionTime + 1;
-//         setTime(newSessionTime * 60 * 1000);
-//         return newSessionTime;
-//       });
-//     }
-//   };
-
-// const sessionIncrease = () => {
-//   if (sessionTime < 60) {
-//     setSessionTime((prevSessionTime) => {
-//       const newSessionTime = prevSessionTime + 1;
-//       setTime(newSessionTime * 60 * 1000);
-//       return newSessionTime;
-//     });
-//   }
-// };
-
-// const sessionDecrease = () => {
-//   if (sessionTime > 1) {
-//     setSessionTime((prevSessionTime) => {
-//       const newSessionTime = prevSessionTime - 1;
-//       setTime(newSessionTime * 60 * 1000);
-//       return newSessionTime;
-//     });
-//   }
-// };
-// const BreakIncrease = () => {
-//   if (breakTime >= 60) return;
-//   setBreakTime((prevBreakTime) => {
-//     const newBreakTime = prevBreakTime + 1;
-
-//     return newBreakTime;
-//   });
-// };
-
-// const BreakDecrease = () => {
-//   if (breakTime > 1) {
-//     setBreakTime((prevBreakTime) => {
-//       const newBreakTime = prevBreakTime - 1;
-//       return newBreakTime;
-//     });
-//   }
-// };
