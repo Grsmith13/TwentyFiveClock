@@ -3,11 +3,11 @@ const StartButton = ({ running, stopTimer, startTimer }) => {
     <>
       {!running ? (
         <button id="start_stop" onClick={stopTimer}>
-          pause
+          <i class="fa-regular fa-circle-pause"></i>
         </button>
       ) : (
         <button id="start_stop" onClick={startTimer}>
-          start
+          <i class="fa-regular fa-stopWatch"></i>
         </button>
       )}
     </>

@@ -1,0 +1,79 @@
+.clock {
+  transform: scale(1.2);
+  margin-top: 25vh;
+  padding: 5px;
+  border: 3px dotted black;
+  width: 360px;
+  display: flex;
+
+  align-items: center;
+  flex-wrap: wrap;
+}
+.clock button {
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: x-large;
+}
+.clock button:hover {
+  color: darkgreen;
+}
+
+/* the Timer and the start/stop and reset button */
+.clock .time {
+  border-bottom: 3px dotted black;
+
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}
+.time h2 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.time h3 {
+  flex-basis: 100%;
+  margin-bottom: 10px;
+}
+
+.time #start_stop {
+  margin-top: 0;
+  margin-right: 45px;
+}
+
+/* this is the box that contains both the session controls and the break controls */
+.clock .session-break {
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.session-break .session {
+  border-right: 3px dotted black;
+
+  display: flex;
+  align-items: center;
+
+  flex-basis: 33.3%;
+}
+
+.session-break #timer-label {
+  flex-basis: 33.3%;
+  margin-left: 27px;
+}
+.session-break .breakSection {
+  height: 69.6px;
+  border-left: 3px dotted black;
+
+  display: flex;
+
+  align-items: center;
+  flex-basis: 33.3%;
+}
+
+.breakSection p {
+  margin: 0;
+}
