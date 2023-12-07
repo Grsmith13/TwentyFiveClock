@@ -21,10 +21,9 @@ function App() {
   });
 
   const timerId = useRef(false);
-  const alert = document.getElementById("beep");
   useEffect(() => {
     return () => {
-      clearInterval(timerId.current); // Cleanup interval on component unmount
+      clearInterval(timerId.current);
     };
   }, []);
 
@@ -40,7 +39,6 @@ function App() {
   };
 
   const Timer = () => {
-    // if (timerId.current) clearInterval(timerId.current);
     if (!timeS.running) {
       timerId.current = setInterval(() => {
         setTimeS((prevState) => {
